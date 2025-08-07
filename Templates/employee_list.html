@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employees List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #000;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      color: #4caf50;
+    }
+    table {
+      width: 95%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .edit-button, .delete-button {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      font-size: 13px;
+    }
+    .edit-button {
+      background-color: #184e85;
+    }
+    .edit-button:hover {
+      background-color: #0056b3;
+    }
+    .delete-button {
+      background-color: #bb1b2e;
+    }
+    .delete-button:hover {
+      background-color: #a71d2a;
+    }
+    .add-button {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .add-button button {
+      background-color: #134404;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .add-button button:hover {
+      background-color: #45a049;
+    }
+    @media (max-width: 768px) {
+      table, th, td {
+        width: 100%;
+        display: block;
+      }
+      th, td {
+        box-sizing: border-box;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+      th::before, td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Employees List</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Sr. No</th>
+        <th>Employee Name</th>
+        <th>Handover Date</th>
+        <th>Model Name</th>
+        <th>Laptop Name</th>
+        <th>Processor</th>
+        <th>Windows</th>
+        <th>SSD</th>
+        <th>RAM</th>
+        <th>Device ID</th>
+        <th>Product Serial No.</th>
+        <th>User Name</th>
+        <th>Host Name</th>
+        <th>Password</th>
+        <th>DLP</th>
+        <th>Option Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+      <tr>
+        <td data-label="Sr. No">{{ loop.index }}</td>
+        <td data-label="Employee Name">{{ employee.emp_name }}</td>
+        <td data-label="Handover Date">{{ employee.handover_date }}</td>
+        <td data-label="Model Name">{{ employee.model_name }}</td>
+        <td data-label="Laptop Name">{{ employee.laptop_name }}</td>
+        <td data-label="Processor">{{ employee.processor }}</td>
+        <td data-label="Windows">{{ employee.windows }}</td>
+        <td data-label="SSD">{{ employee.ssd }}</td>
+        <td data-label="RAM">{{ employee.ram }}</td>
+        <td data-label="Device ID">{{ employee.device_id }}</td>
+        <td data-label="Product Serial No.">{{ employee.product_serial_no }}</td>
+        <td data-label="User Name">{{ employee.username }}</td>
+        <td data-label="Host Name">{{ employee.hostname }}</td>
+        <td data-label="Password">{{ employee.password }}</td>
+        <td data-label="DLP">{{ employee.dlp }}</td>
+        <td data-label="Option Type">{{ employee.option_type }}</td>
+        <td data-label="Action">
+          <a href="{{ url_for('update_employee', emp_id=employee.id) }}" class="edit-button">Edit</a>
+          <a href="{{ url_for('delete_employee', emp_id=employee.id) }}" class="delete-button" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="add-button">
+    <a href="{{ url_for('add_employee') }}">
+      <button type="button">Add Employee</button>
+    </a>
+  </div>
+</body>
+</html>

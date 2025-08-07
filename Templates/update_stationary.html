@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Stationary Item</title>
+    <style>
+        /* same styles as add_stationary.html */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Update Stationary Item</h2>
+    <form method="POST">
+        <label>Product Name:</label>
+        <input type="text" name="product_name" value="{{ stationary.product_name }}" required>
+
+        <label>Mail ID:</label>
+        <input type="text" name="mail_id" value="{{ stationary.mail_id }}" required>
+
+        <label>Purchase Date:</label>
+        <input type="date" name="purchase_date" value="{{ stationary.purchase_date }}" required>
+
+        <label>Activation Date:</label>
+        <input type="date" name="activation_date" value="{{ stationary.activation_date }}" required>
+
+        <label>Expiry Date:</label>
+        <input type="date" name="expiry_date" value="{{ stationary.expiry_date }}" required>
+
+        <label>Warranty (Years):</label>
+        <input type="number" name="warranty_years" value="{{ stationary.warranty_years }}" required>
+
+        <label>Make In:</label>
+        <input type="text" name="make_in" value="{{ stationary.make_in }}" required>
+
+        <button type="submit">Update Item</button>
+    </form>
+</div>
+</body>
+</html>

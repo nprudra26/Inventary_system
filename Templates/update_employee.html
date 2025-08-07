@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Update Employee Details</title>
+    <style>
+        /* Same styling as your original — no change */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            color: #333;
+        }
+        .container {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #555;
+        }
+        input[type="text"], input[type="date"], textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .add-button {
+            text-align: center;
+        }
+        .add-button button {
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .add-button button:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Update Employee Details</h1>
+    <form method="POST">
+
+        <label>Employee Name:</label>
+        <input type="text" name="emp_name" value="{{ employee.emp_name }}" required>
+
+        <label>Handover Date:</label>
+        <input type="date" name="handover_date" value="{{ employee.handover_date.strftime('%Y-%m-%d') if employee.handover_date else '' }}">
+
+        <label>Model Name:</label>
+        <input type="text" name="model_name" value="{{ employee.model_name }}">
+
+        <label>Laptop Name:</label>
+        <input type="text" name="laptop_name" value="{{ employee.laptop_name }}">
+
+        <label>Processor:</label>
+        <input type="text" name="processor" value="{{ employee.processor }}">
+
+        <label>Windows:</label>
+        <input type="text" name="windows" value="{{ employee.windows }}">
+
+        <label>SSD:</label>
+        <input type="text" name="ssd" value="{{ employee.ssd }}">
+
+        <label>RAM:</label>
+        <input type="text" name="ram" value="{{ employee.ram }}">
+
+        <label>Device ID:</label>
+        <input type="text" name="device_id" value="{{ employee.device_id }}">
+
+        <label>Product Serial No:</label>
+        <input type="text" name="product_serial_no" value="{{ employee.product_serial_no }}">
+
+        <label>User Name:</label>
+        <input type="text" name="username" value="{{ employee.username }}">
+
+        <label>Host Name:</label>
+        <input type="text" name="hostname" value="{{ employee.hostname }}">
+
+        <label>Password:</label>
+        <input type="text" name="password" value="{{ employee.password }}">
+
+        <label>DLP:</label>
+        <input type="text" name="dlp" value="{{ employee.dlp }}">
+
+        <label>Option Type:</label>
+        <input type="text" name="option_type" value="{{ employee.option_type }}">
+
+        <div class="add-button">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stationary List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #4CAF50;
+      margin: 20px 0;
+    }
+    table {
+      width: 95%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .actions a {
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
+      color: white;
+    }
+    .edit {
+      background-color: #184e85;
+    }
+    .edit:hover {
+      background-color: #0056b3;
+    }
+    .delete {
+      background-color: #bb1b2e;
+    }
+    .delete:hover {
+      background-color: #a71d2a;
+    }
+    .add-btn {
+      text-align: center;
+      margin: 20px;
+    }
+    .add-btn a {
+      background-color: #134404;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .add-btn a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Stationary Items List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sr. No</th>
+      <th>Product Name</th>
+      <th>Mail ID</th>
+      <th>Purchase Date</th>
+      <th>Activation Date</th>
+      <th>Expiry Date</th>
+      <th>Warranty (Years)</th>
+      <th>Make In</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in stationaries %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ item.product_name }}</td>
+      <td>{{ item.mail_id }}</td>
+      <td>{{ item.purchase_date }}</td>
+      <td>{{ item.activation_date }}</td>
+      <td>{{ item.expiry_date }}</td>
+      <td>{{ item.warranty_years }}</td>
+      <td>{{ item.make_in }}</td>
+      <td class="actions">
+        <a href="{{ url_for('update_stationary', stationary_id=item.id) }}" class="edit">Edit</a>
+        <a href="{{ url_for('delete_stationary', stationary_id=item.id) }}" class="delete" onclick="return confirm('Are you sure?')">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="add-btn">
+  <a href="{{ url_for('add_stationary') }}">Add Stationary Item</a>
+</div>
+
+</body>
+</html>

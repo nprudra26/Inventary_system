@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome - Inventory System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+    h2 {
+      color: #2b642d;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 15px 0;
+    }
+    a {
+      display: inline-block;
+      width: 80%;
+      padding: 12px 20px;
+      background-color: #215023;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    a:hover {
+      background-color: #388e3c;
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 30px 20px;
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to Inventory System</h2>
+    <ul>
+      <li><a href="{{ url_for('add_employee') }}">➕ Add Employee</a></li>
+      <li><a href="{{ url_for('employee_list') }}">👨‍💼 View All Employees</a></li>
+      <li><a href="{{ url_for('add_repair') }}">🛠️ Add Repair</a></li>
+      <li><a href="{{ url_for('repair_list') }}">📋 View Repairs</a></li>
+      <li><a href="{{ url_for('add_stationary') }}">📦 Add Stationary</a></li>
+      <li><a href="{{ url_for('stationary_list') }}">🗂️ View Stationary</a></li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Update Repair Record</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #4CAF50;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Update Repair Record</h1>
+    <form method="POST">
+      <label for="device_type">Device Type:</label>
+      <select id="device_type" name="device_type" required>
+        <option value="Laptop" {% if repair.device_type == 'Laptop' %}selected{% endif %}>Laptop</option>
+        <option value="Printer" {% if repair.device_type == 'Printer' %}selected{% endif %}>Printer</option>
+        <option value="TV" {% if repair.device_type == 'TV' %}selected{% endif %}>TV</option>
+        <option value="Mouse" {% if repair.device_type == 'Mouse' %}selected{% endif %}>Mouse</option>
+        <option value="Other" {% if repair.device_type == 'Other' %}selected{% endif %}>Other</option>
+      </select>
+
+      <label for="emp_name">Employee Name:</label>
+      <input type="text" id="emp_name" name="emp_name" value="{{ repair.emp_name }}" required>
+
+      <label for="device_id">Device ID:</label>
+      <input type="text" id="device_id" name="device_id" value="{{ repair.device_id }}" required>
+
+      <label for="outward_date">Outward Date:</label>
+      <input type="date" id="outward_date" name="outward_date" value="{{ repair.outward_date }}">
+
+      <label for="inward_date">Inward Date:</label>
+      <input type="date" id="inward_date" name="inward_date" value="{{ repair.inward_date }}">
+
+      <label for="purpose_of_repair">Purpose of Repair:</label>
+      <textarea id="purpose_of_repair" name="purpose_of_repair">{{ repair.purpose_of_repair }}</textarea>
+
+      <label for="client_name">Client Name:</label>
+      <input type="text" id="client_name" name="client_name" value="{{ repair.client_name }}" required>
+
+      <input type="submit" value="Update">
+    </form>
+  </div>
+</body>
+</html>
